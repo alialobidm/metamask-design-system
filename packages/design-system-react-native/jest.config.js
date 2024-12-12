@@ -23,6 +23,11 @@ module.exports = merge(baseConfig, {
       statements: 100,
     },
   },
+  collectCoverageFrom: [
+    '!**/*.scripts.{js,ts}', // Exclude .scripts files
+    '!**/node_modules/**', // Exclude node_modules
+    '!**/dist/**', // Exclude build outputs
+  ],
   preset: 'react-native',
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
@@ -33,5 +38,7 @@ module.exports = merge(baseConfig, {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleNameMapper: {
     '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.svg$': '<rootDir>/__mocks__/svgMock.js',
   },
+  setupFilesAfterEnv: ['./jest.setup.js'],
 });

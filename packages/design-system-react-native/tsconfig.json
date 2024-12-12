@@ -3,14 +3,16 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-native",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node16"
   },
   "references": [
     {
       "path": "../design-system-twrnc-preset"
     }
   ],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "global.d.ts"],
   "exclude": [
     "jest.config.js",
     ".eslintrc.js",
