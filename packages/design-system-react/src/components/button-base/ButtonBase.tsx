@@ -1,7 +1,7 @@
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import React from 'react';
 
-import { Icon, IconName } from '..';
+import { Icon, IconName, IconSize, Text, TextColor } from '..';
 import { twMerge } from '../../utils/tw-merge';
 import { BUTTON_BASE_SIZE_CLASS_MAP } from './ButtonBase.constants';
 import type { ButtonBaseProps } from './ButtonBase.types';
@@ -25,6 +25,7 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
       endIconName,
       endIconProps,
       endAccessory,
+      textProps,
       style,
       ...props
     },
@@ -36,6 +37,7 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
       <span className="inline-flex items-center">
         <Icon
           name={IconName.Loading}
+          size={IconSize.Sm}
           className={twMerge(
             'animate-spin mr-2 text-inherit',
             loadingIconProps?.className,
@@ -51,7 +53,8 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
         return (
           <Icon
             name={startIconName}
-            className={twMerge('mr-2 text-inherit', startIconProps?.className)}
+            size={IconSize.Sm}
+            className={twMerge('mr-2', startIconProps?.className)}
             {...startIconProps}
           />
         );
@@ -67,7 +70,8 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
         return (
           <Icon
             name={endIconName}
-            className={twMerge('ml-2 text-inherit', endIconProps?.className)}
+            size={IconSize.Sm}
+            className={twMerge('ml-2', endIconProps?.className)}
             {...endIconProps}
           />
         );
@@ -76,6 +80,17 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
         return <span className="ml-2">{endAccessory}</span>;
       }
       return null;
+    };
+
+    const renderContent = () => {
+      if (children && typeof children === 'string') {
+        return (
+          <Text color={TextColor.Inherit} asChild {...textProps}>
+            <span>{children}</span>
+          </Text>
+        );
+      }
+      return children;
     };
 
     const mergedClassName = twMerge(
@@ -103,7 +118,9 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
         {...props}
       >
         {renderStartContent()}
-        <Slottable>{isLoading ? renderLoadingState() : children}</Slottable>
+        <Slottable>
+          {isLoading ? renderLoadingState() : renderContent()}
+        </Slottable>
         {renderEndContent()}
       </Component>
     );
