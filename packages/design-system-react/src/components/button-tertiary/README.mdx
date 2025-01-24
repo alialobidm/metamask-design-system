@@ -21,8 +21,8 @@ import { ButtonTertiary } from '@metamask/design-system-react';
 ButtonTertiary supports three sizes:
 
 - `ButtonTertiarySize.Sm` (32px)
-- `ButtonTertiarySize.Md` (40px) - default
-- `ButtonTertiarySize.Lg` (48px)
+- `ButtonTertiarySize.Md` (40px)
+- `ButtonTertiarySize.Lg` (48px) - default
 
 <Canvas of={ButtonTertiaryStories.Size} />
 
@@ -37,6 +37,12 @@ ButtonTertiary can be set to take up the full width of its container.
 Use the danger variant for destructive actions.
 
 <Canvas of={ButtonTertiaryStories.IsDanger} />
+
+### IsInverse
+
+Use the inverse variant when the button needs to be displayed on a dark background. When combined with `isDanger`, the button will have inverse styling with error text color.
+
+<Canvas of={ButtonTertiaryStories.IsInverse} />
 
 ### StartIconName and EndIconName
 

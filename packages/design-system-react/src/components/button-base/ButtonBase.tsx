@@ -1,7 +1,7 @@
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import React from 'react';
 
-import { Icon, IconName, IconSize, Text, TextColor } from '..';
+import { FontWeight, Icon, IconName, IconSize, Text, TextColor } from '..';
 import { twMerge } from '../../utils/tw-merge';
 import { BUTTON_BASE_SIZE_CLASS_MAP } from './ButtonBase.constants';
 import type { ButtonBaseProps } from './ButtonBase.types';
@@ -12,7 +12,7 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
     {
       children,
       className,
-      size = ButtonBaseSize.Md,
+      size = ButtonBaseSize.Lg,
       isFullWidth,
       asChild,
       isDisabled,
@@ -32,20 +32,24 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
     ref,
   ) => {
     const Component = asChild ? Slot : 'button';
+    const isInteractive = !(isDisabled ?? isLoading);
 
     const renderLoadingState = () => (
-      <span className="inline-flex items-center">
-        <Icon
-          name={IconName.Loading}
-          size={IconSize.Sm}
-          className={twMerge(
-            'animate-spin mr-2 text-inherit',
-            loadingIconProps?.className,
-          )}
-          {...loadingIconProps}
-        />
-        {loadingText ?? children}
-      </span>
+      <>
+        <span className="absolute inline-flex items-center">
+          <Icon
+            name={IconName.Loading}
+            size={IconSize.Sm}
+            className={twMerge(
+              'animate-spin mr-2 text-inherit',
+              loadingIconProps?.className,
+            )}
+            {...loadingIconProps}
+          />
+          {loadingText}
+        </span>
+        <span className="invisible inline-flex items-center">{children}</span>
+      </>
     );
 
     const renderStartContent = () => {
@@ -85,7 +89,12 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
     const renderContent = () => {
       if (children && typeof children === 'string') {
         return (
-          <Text color={TextColor.Inherit} asChild {...textProps}>
+          <Text
+            fontWeight={FontWeight.Medium}
+            color={TextColor.Inherit}
+            asChild
+            {...textProps}
+          >
             <span>{children}</span>
           </Text>
         );
@@ -99,12 +108,23 @@ export const ButtonBase = React.forwardRef<HTMLButtonElement, ButtonBaseProps>(
       'rounded-full px-4',
       'text-default font-medium',
       'bg-muted',
+      // Add relative positioning for loading state
+      'relative',
       // Size
       BUTTON_BASE_SIZE_CLASS_MAP[size],
       // Full width
       isFullWidth && 'w-full',
+      // Animation classes - only applied when interactive
+      isInteractive && [
+        'transition-[transform,colors,opacity]',
+        'duration-100',
+        'ease-linear',
+        'active:scale-[0.97]',
+        'active:ease-[cubic-bezier(0.3,0.8,0.3,1)]',
+      ],
       // Disabled state - apply to both isDisabled and isLoading
-      (isDisabled || isLoading) && 'opacity-50 cursor-not-allowed',
+      (isDisabled || isLoading) && 'cursor-not-allowed',
+      isDisabled && 'opacity-50',
       // Custom classes
       className,
     );

@@ -18,46 +18,47 @@ export const ButtonSecondary = React.forwardRef<
       // Default secondary styles
       !isDanger &&
         !isInverse && [
-          'bg-default border-2 border-muted text-default',
-          // Only apply hover/active styles when interactive
-          isInteractive && [
-            'hover:bg-default-hover hover:border-default',
-            'active:bg-default-pressed',
-          ],
+          'bg-transparent border-2 border-icon-muted text-default',
+          // Loading state uses pressed color
+          isLoading && 'bg-pressed',
         ],
       // Danger styles
       isDanger &&
         !isInverse && [
-          'bg-default border-2 border-error-default text-error-default',
-          // Only apply hover/active styles when interactive
-          isInteractive && [
-            'hover:bg-default-hover',
-            'active:bg-default-pressed',
-          ],
+          'bg-error-muted border-2 border-error-default text-error-default',
+          // Loading state uses error muted pressed color
+          isLoading && 'bg-error-muted-pressed text-error-default-pressed',
         ],
       // Inverse styles
       isInverse &&
         !isDanger && [
           'bg-transparent border-2 border-primary-inverse text-primary-inverse',
-          // Only apply hover/active styles when interactive
-          isInteractive && ['hover:bg-hover', 'active:bg-pressed'],
+          // Loading state uses pressed color
+          isLoading && 'bg-pressed',
         ],
       // Inverse danger styles
       isInverse &&
         isDanger && [
-          'bg-transparent border-2 border-error-inverse text-error-inverse',
-          // Only apply hover/active styles when interactive
-          isInteractive && ['hover:bg-hover', 'active:bg-pressed'],
+          'bg-default border-0 text-error-default',
+          // Loading state uses pressed color
+          isLoading && 'bg-default-pressed',
         ],
-      // Animation classes - only applied when interactive
+      // Hover/Active states - only applied when interactive
       isInteractive && [
-        'transition-[transform,colors,opacity]',
-        'duration-100',
-        'ease-linear',
-        // Scale animation
-        'active:scale-95',
-        'active:ease-[cubic-bezier(0.3,0.8,0.3,1)]',
+        !isDanger && !isInverse && ['hover:bg-hover', 'active:bg-pressed'],
+        isDanger &&
+          !isInverse && [
+            'hover:bg-error-muted-hover',
+            'active:bg-error-muted-pressed',
+          ],
+        isInverse && !isDanger && ['hover:bg-hover', 'active:bg-pressed'],
+        isInverse &&
+          isDanger && ['hover:bg-default-hover', 'active:bg-default-pressed'],
       ],
+      // Loading styles
+      isLoading && 'cursor-not-allowed',
+      // Disabled styles (but not loading)
+      isDisabled && !isLoading && ['opacity-50', 'cursor-not-allowed'],
       className,
     );
 

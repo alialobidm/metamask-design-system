@@ -125,6 +125,19 @@ export const Size: Story = {
   ),
 };
 
+export const IsInverse: Story = {
+  render: (args) => (
+    <div className="bg-primary-default p-4 rounded flex gap-2">
+      <ButtonTertiary {...args} isInverse>
+        Inverse
+      </ButtonTertiary>
+      <ButtonTertiary {...args} isInverse isDanger>
+        Inverse Danger
+      </ButtonTertiary>
+    </div>
+  ),
+};
+
 export const IsFullWidth: Story = {
   args: {
     children: 'Full Width',

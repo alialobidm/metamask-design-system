@@ -122,9 +122,7 @@ export const Size: Story = {
       <ButtonBase {...args} size={ButtonBaseSize.Md}>
         Medium
       </ButtonBase>
-      <ButtonBase {...args} size={ButtonBaseSize.Lg}>
-        Large
-      </ButtonBase>
+      <ButtonBase {...args}>Large</ButtonBase>
     </div>
   ),
 };
