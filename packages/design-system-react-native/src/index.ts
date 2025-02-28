@@ -4,6 +4,13 @@ import AvatarBaseComponent from './primitives/AvatarBase';
 export const AvatarBase = withThemeProvider(AvatarBaseComponent);
 export { AvatarBaseProps, AvatarBaseSize } from './primitives/AvatarBase';
 
+import AvatarFaviconComponent from './components/AvatarFavicon';
+export const AvatarFavicon = withThemeProvider(AvatarFaviconComponent);
+export {
+  AvatarFaviconProps,
+  AvatarFaviconSize,
+} from './components/AvatarFavicon';
+
 import AvatarIconComponent from './components/AvatarIcon';
 export const AvatarIcon = withThemeProvider(AvatarIconComponent);
 export {
