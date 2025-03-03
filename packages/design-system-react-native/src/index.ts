@@ -19,6 +19,13 @@ export {
   AvatarIconSize,
 } from './components/AvatarIcon';
 
+import AvatarNetworkComponent from './components/AvatarNetwork';
+export const AvatarNetwork = withThemeProvider(AvatarNetworkComponent);
+export {
+  AvatarNetworkProps,
+  AvatarNetworkSize,
+} from './components/AvatarNetwork';
+
 import AvatarTokenComponent from './components/AvatarToken';
 export const AvatarToken = withThemeProvider(AvatarTokenComponent);
 export { AvatarTokenProps, AvatarTokenSize } from './components/AvatarToken';
