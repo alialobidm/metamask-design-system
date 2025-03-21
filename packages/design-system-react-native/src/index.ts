@@ -46,6 +46,10 @@ import AvatarTokenComponent from './components/AvatarToken';
 export const AvatarToken = withThemeProvider(AvatarTokenComponent);
 export { AvatarTokenProps, AvatarTokenSize } from './components/AvatarToken';
 
+import BadgeCountComponent from './components/BadgeCount';
+export const BadgeCount = withThemeProvider(BadgeCountComponent);
+export { BadgeCountProps, BadgeCountSize } from './components/BadgeCount';
+
 import BadgeNetworkComponent from './components/BadgeNetwork';
 export const BadgeNetwork = withThemeProvider(BadgeNetworkComponent);
 export { BadgeNetworkProps } from './components/BadgeNetwork';
