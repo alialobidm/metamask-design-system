@@ -50,6 +50,10 @@ import BadgeCountComponent from './components/BadgeCount';
 export const BadgeCount = withThemeProvider(BadgeCountComponent);
 export { BadgeCountProps, BadgeCountSize } from './components/BadgeCount';
 
+import BadgeIconComponent from './components/BadgeIcon';
+export const BadgeIcon = withThemeProvider(BadgeIconComponent);
+export { BadgeIconProps } from './components/BadgeIcon';
+
 import BadgeNetworkComponent from './components/BadgeNetwork';
 export const BadgeNetwork = withThemeProvider(BadgeNetworkComponent);
 export { BadgeNetworkProps } from './components/BadgeNetwork';
