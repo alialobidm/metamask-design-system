@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.1]
+
+### Fixed
+
+- fix: fixing CentraNo1 font name in token by removing space ([#522](https://github.com/MetaMask/metamask-design-system/pull/522))
+
 ## [6.0.0]
 
 ### Changed
@@ -342,7 +348,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release.
 
-[Unreleased]: https://github.com/MetaMask/metamask-design-system/compare/@metamask/design-tokens@6.0.0...HEAD
+[Unreleased]: https://github.com/MetaMask/metamask-design-system/compare/@metamask/design-tokens@6.0.1...HEAD
+[6.0.1]: https://github.com/MetaMask/metamask-design-system/compare/@metamask/design-tokens@6.0.0...@metamask/design-tokens@6.0.1
 [6.0.0]: https://github.com/MetaMask/metamask-design-system/compare/@metamask/design-tokens@5.1.0...@metamask/design-tokens@6.0.0
 [5.1.0]: https://github.com/MetaMask/metamask-design-system/compare/@metamask/design-tokens@5.0.0...@metamask/design-tokens@5.1.0
 [5.0.0]: https://github.com/MetaMask/metamask-design-system/compare/@metamask/design-tokens@4.2.0...@metamask/design-tokens@5.0.0
