@@ -64,6 +64,9 @@ export type { AvatarAccountProps } from './avatar-account';
 export { Blockies } from './blockies';
 export type { BlockiesProps } from './blockies';
 
+export { BadgeIcon } from './badge-icon';
+export type { BadgeIconProps } from './badge-icon';
+
 export { BadgeStatus } from './badge-status';
 export type { BadgeStatusProps } from './badge-status';
 export { BadgeStatusStatus, BadgeStatusSize } from './badge-status';
